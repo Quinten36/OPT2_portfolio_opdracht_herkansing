@@ -132,4 +132,12 @@ public class Client {
         System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
         profileController.profilecontroller.showProfileFromClient(this);
     }
+
+    public void addClientOption() {
+        
+    }
+
+    public void addClient(String name, String geslacht, ArrayList<String> allergien, ArrayList<String> dieetwensen, String wijk) {
+
+    }
 }
