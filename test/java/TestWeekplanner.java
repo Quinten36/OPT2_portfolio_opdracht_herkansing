@@ -19,7 +19,7 @@ public class TestWeekplanner {
 
     @Test
     public void test_if_there_is_a_weekplanner_of_this_week() {
-        Client Mvr_Zeeuw = new Client("Margrit Zeeuw", "Vrouw", new ArrayList<>(List.of("Pasta")), null, "Holy");
+        Client Mvr_Zeeuw = new Client("Margrit Zeeuw", "Vrouw", new String[]{"Pasta"}, null, "Holy");
 
         //expected false
         boolean result = Weekplanner.checkNewestPlanner(Mvr_Zeeuw);
@@ -76,7 +76,7 @@ public class TestWeekplanner {
 
     @Test
     public void test_if_a_weekplanner_is_being_added_to_the_client() {
-        Client Mvr_Zeeuw = new Client("Margrit Zeeuw", "Vrouw", new ArrayList<>(List.of("Pasta")), null, "Holy");
+        Client Mvr_Zeeuw = new Client("Margrit Zeeuw", "Vrouw", new String[]{"Pasta"}, null, "Holy");
 
         Weekplanner week = new Weekplanner(Weekplanner.getCurrentWeeknummer());
         ArrayList<Gerecht> expectedResult = week.getGerechten();

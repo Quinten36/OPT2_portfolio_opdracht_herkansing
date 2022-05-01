@@ -8,13 +8,13 @@ public class Client {
     private final String naam;
     private final String geslacht;
     //todo: kan dit niet gewoon normale arrays zijn?
-    private ArrayList<String> dieetwensen;
-    private ArrayList<String> allergien;
+    private String[] dieetwensen;
+    private String[] allergien;
     private final String wijk;
     private ArrayList<Weekplanner> weekplanners = new ArrayList<Weekplanner>();
     public static ArrayList<Client> alleClienten = new ArrayList<Client>();
 
-    public Client(String naam, String geslacht, ArrayList<String> dieetwensen, ArrayList<String> allergien, String wijk) {
+    public Client(String naam, String geslacht, String[] dieetwensen, String[] allergien, String wijk) {
         this.naam = naam;
         this.geslacht = geslacht;
         this.dieetwensen = dieetwensen;
@@ -50,7 +50,7 @@ public class Client {
             System.out.print("Client heeft geen dieetwensen\n");
             return;
         }
-        if (client.getDieetwensen().size() == 0) {
+        if (client.getDieetwensen().length == 0) {
             System.out.print("Client heeft geen dieetwensen\n");
             return;
         }
@@ -67,7 +67,7 @@ public class Client {
             System.out.print("Client heeft geen allergien\n");
             return;
         }
-        if (client.getAllergien().size() == 0) {
+        if (client.getAllergien().length == 0) {
             System.out.print("Client heeft geen allergien\n");
             return;
         }
@@ -98,8 +98,8 @@ public class Client {
         return geslacht;
     }
     public String getNaam() { return naam; }
-    public ArrayList<String> getDieetwensen() { return dieetwensen; }
-    public ArrayList<String> getAllergien() { return allergien; }
+    public String[] getDieetwensen() { return dieetwensen; }
+    public String[] getAllergien() { return allergien; }
     public String getWijk() { return wijk; }
 
     /**
@@ -133,8 +133,8 @@ public class Client {
         profileController.profilecontroller.showProfileFromClient(this);
     }
 
-    public void addClientOption() {
-        
+    public static void addClientOption() {
+
     }
 
     public void addClient(String name, String geslacht, ArrayList<String> allergien, ArrayList<String> dieetwensen, String wijk) {
