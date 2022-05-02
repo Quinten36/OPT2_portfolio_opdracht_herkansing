@@ -133,7 +133,7 @@ public class Client {
         profileController.profilecontroller.showProfileFromClient(this);
     }
 
-    public static void addClientOption(boolean test) {
+    public static void addClientOption() {
         System.out.println("Inschrijven Cliënt:\n");
 
         //ask name
@@ -157,16 +157,14 @@ public class Client {
         //TODO: als antwoord niks is legen array sturen
         //ask dieetwensen (seperate bij komma)
         System.out.println("\nHeeft de cliënt dieetwensen?\n Zo nee typ \"niks\", Zo ja typ de dieetwens en typ een komma om ze te scheiden");
-        String dieetwensenUncut = userInput.getUserInputString().trim();
+        String dieetwensenUncut = userInput.getUserInputString();
         String[] dieetwensen = dieetwensenUncut.split(",");
 
-//        if (test)
-//            System.exit(6);
-//        else
-            addClient(name, geslacht, allergien, dieetwensen, wijk);
+        addClient(name, geslacht, allergien, dieetwensen, wijk);
     }
 
-    private static void addClient(String name, String geslacht, String[] allergien, String[] dieetwensen, String wijk) {
+    //TODO: kijken of dit ook naar private kan
+    public static void addClient(String name, String geslacht, String[] allergien, String[] dieetwensen, String wijk) {
 
     }
 }

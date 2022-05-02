@@ -40,7 +40,7 @@ public class menuController {
                     break;
                 case "2":
                     //add client
-                    Client.addClientOption(false);
+                    Client.addClientOption();
                     break;
                 case "3":
                     //change client data

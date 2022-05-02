@@ -37,7 +37,7 @@ public class TestClient {
                 " Zo nee typ \"niks\", Zo ja typ de dieetwens en typ een komma om ze te scheiden> ";//Later in te vullen
 
         //act
-        Client.addClientOption(true);
+        Client.addClientOption();
         String actualOutcome = userInputOutputHandler.getfullSystemOutput().toString();
 
         //Assert
@@ -48,13 +48,23 @@ public class TestClient {
     @Test
     public void TestAddClient() {
         //Arrange
-        //        int expectedTotalClientLength = Client.alleClienten.size()+1;
+        int expectedTotalClientLength = Client.alleClienten.size()+1;
+        int expectedTotalClientLength2 = Client.alleClienten.size()+2;
 
         //Act
-//        int actualTotalClientLength = Client.alleClienten.size();
+        Client.addClient("Quinten Kempers", "Man", null, new String[]{"Bananen"}, "Holy");
+        int actualTotalClientLength = Client.alleClienten.size();
 
         //Assert
-        //        Assertions.assertEquals(expectedTotalClientLength, actualTotalClientLength);
+        Assertions.assertEquals(expectedTotalClientLength, actualTotalClientLength);
+        Assertions.assertEquals("Quinten", Client.alleClienten.get(Client.alleClienten.size()-1).getNaam());
+
+        Client.addClient("Lisa de Jager", "Vrouw", null, new String[]{"Bananen"}, "Holy");
+        actualTotalClientLength = Client.alleClienten.size();
+
+        //Assert
+        Assertions.assertEquals(expectedTotalClientLength2, actualTotalClientLength);
+        Assertions.assertEquals("Quinten", Client.alleClienten.get(Client.alleClienten.size()-1).getNaam());
     }
    
 //Act
