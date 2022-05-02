@@ -45,7 +45,17 @@ public class TestClient {
 
     }
 
+    @Test
+    public void TestAddClient() {
+        //Arrange
+        //        int expectedTotalClientLength = Client.alleClienten.size()+1;
 
+        //Act
+//        int actualTotalClientLength = Client.alleClienten.size();
+
+        //Assert
+        //        Assertions.assertEquals(expectedTotalClientLength, actualTotalClientLength);
+    }
    
 //Act
 //        userInputOutputHandler.makeUserInput("Thomas");
