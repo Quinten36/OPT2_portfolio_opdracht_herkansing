@@ -23,21 +23,26 @@ public class TestClient {
     public void TestAddClientMenuOption() {
         //first i check if the process of aksing the input is correct. After that i check if the client is correctly added
 
-        //Arrange
-        userInputOutputHandler.makeUserInput("Quinten Kempers");
-        userInputOutputHandler.makeUserInput("Man");
-        userInputOutputHandler.makeUserInput(null);
-        userInputOutputHandler.makeUserInputs(new String[]{"Bananen"});//new ArrayList<>(List.of("Bananen"))
-        userInputOutputHandler.makeUserInput("Holy");
+        ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream("Quinten Kempers\nMan\nniks\nBananen\nHoly".getBytes());
+        System.setIn(byteArrayInputStream);
 
-        String expectedOutcome = "";//Later in te vullen
+        String expectedOutcome = "Inschrijven Cliënt:\n" +
+                "\n" +
+                "Wat is de naam van de cliënt?> \n" +
+                "Wat is het geslacht van de cliënt? (Man/Vrouw)> \n" +
+                "In welke wijk woont de cliënt?> \n" +
+                "Heeft de cliënt allergien?\n" +
+                " Zo nee typ \"niks\", Zo ja typ de allergien en typ een komma om ze te scheiden> \n" +
+                "Heeft de cliënt dieetwensen?\n" +
+                " Zo nee typ \"niks\", Zo ja typ de dieetwens en typ een komma om ze te scheiden> ";//Later in te vullen
 
         //act
-        Client.addClientOption();
-        String actualOutcome = userInputOutputHandler.getSystemOutput();
+        Client.addClientOption(true);
+        String actualOutcome = userInputOutputHandler.getfullSystemOutput().toString();
 
         //Assert
         Assertions.assertEquals(expectedOutcome, actualOutcome);
+
     }
 
 

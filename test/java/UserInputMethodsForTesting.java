@@ -47,4 +47,15 @@ public class UserInputMethodsForTesting {
         String[] lines = byteArrayOutputStream.toString().split(System.lineSeparator());
         return lines[lines.length-1];
     }
+
+    public StringBuilder getfullSystemOutput() {
+        StringBuilder output = new StringBuilder();
+        String[] result = byteArrayOutputStream.toString().split(System.lineSeparator());
+        for (String r : result) {
+            output.append(r);
+        }
+        return output;
+//        String[] lines = byteArrayOutputStream.toString().split(System.lineSeparator());
+//        return lines[lines.length-1];
+    }
 }

@@ -133,11 +133,40 @@ public class Client {
         profileController.profilecontroller.showProfileFromClient(this);
     }
 
-    public static void addClientOption() {
+    public static void addClientOption(boolean test) {
+        System.out.println("Inschrijven Cliënt:\n");
 
+        //ask name
+        System.out.println("\nWat is de naam van de cliënt?");
+        String name = userInput.getUserInputString();
+
+        //ask geslacht
+        System.out.println("\nWat is het geslacht van de cliënt? (Man/Vrouw)");
+        String geslacht = userInput.getUserInputString();
+
+        //ask woonplaats
+        System.out.println("\nIn welke wijk woont de cliënt?");
+        String wijk = userInput.getUserInputString();
+
+        //TODO: als antwoord niks is legen array sturen
+        //ask allergien(seperate bij komma)
+        System.out.println("\nHeeft de cliënt allergien?\n Zo nee typ \"niks\", Zo ja typ de allergien en typ een komma om ze te scheiden");
+        String allergienUncut = userInput.getUserInputString().trim();
+        String[] allergien = allergienUncut.split(",");
+
+        //TODO: als antwoord niks is legen array sturen
+        //ask dieetwensen (seperate bij komma)
+        System.out.println("\nHeeft de cliënt dieetwensen?\n Zo nee typ \"niks\", Zo ja typ de dieetwens en typ een komma om ze te scheiden");
+        String dieetwensenUncut = userInput.getUserInputString().trim();
+        String[] dieetwensen = dieetwensenUncut.split(",");
+
+//        if (test)
+//            System.exit(6);
+//        else
+            addClient(name, geslacht, allergien, dieetwensen, wijk);
     }
 
-    public void addClient(String name, String geslacht, ArrayList<String> allergien, ArrayList<String> dieetwensen, String wijk) {
+    private static void addClient(String name, String geslacht, String[] allergien, String[] dieetwensen, String wijk) {
 
     }
 }
