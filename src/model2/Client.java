@@ -8,13 +8,13 @@ public class Client {
     private final String naam;
     private final String geslacht;
     //todo: kan dit niet gewoon normale arrays zijn?
-    private ArrayList<String> dieetwensen;
-    private ArrayList<String> allergien;
+    private String[] dieetwensen;
+    private String[] allergien;
     private final String wijk;
     private ArrayList<Weekplanner> weekplanners = new ArrayList<Weekplanner>();
     public static ArrayList<Client> alleClienten = new ArrayList<Client>();
 
-    public Client(String naam, String geslacht, ArrayList<String> dieetwensen, ArrayList<String> allergien, String wijk) {
+    public Client(String naam, String geslacht, String[] dieetwensen, String[] allergien, String wijk) {
         this.naam = naam;
         this.geslacht = geslacht;
         this.dieetwensen = dieetwensen;
@@ -50,7 +50,7 @@ public class Client {
             System.out.print("Client heeft geen dieetwensen\n");
             return;
         }
-        if (client.getDieetwensen().size() == 0) {
+        if (client.getDieetwensen().length == 0) {
             System.out.print("Client heeft geen dieetwensen\n");
             return;
         }
@@ -67,7 +67,7 @@ public class Client {
             System.out.print("Client heeft geen allergien\n");
             return;
         }
-        if (client.getAllergien().size() == 0) {
+        if (client.getAllergien().length == 0) {
             System.out.print("Client heeft geen allergien\n");
             return;
         }
@@ -98,8 +98,8 @@ public class Client {
         return geslacht;
     }
     public String getNaam() { return naam; }
-    public ArrayList<String> getDieetwensen() { return dieetwensen; }
-    public ArrayList<String> getAllergien() { return allergien; }
+    public String[] getDieetwensen() { return dieetwensen; }
+    public String[] getAllergien() { return allergien; }
     public String getWijk() { return wijk; }
 
     /**
@@ -131,5 +131,42 @@ public class Client {
         userInput.getUserInputString();
         System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
         profileController.profilecontroller.showProfileFromClient(this);
+    }
+
+    public static void addClientOption(boolean test) {
+        System.out.println("Inschrijven Cliënt:\n");
+
+        //ask name
+        System.out.println("\nWat is de naam van de cliënt?");
+        String name = userInput.getUserInputString();
+
+        //ask geslacht
+        System.out.println("\nWat is het geslacht van de cliënt? (Man/Vrouw)");
+        String geslacht = userInput.getUserInputString();
+
+        //ask woonplaats
+        System.out.println("\nIn welke wijk woont de cliënt?");
+        String wijk = userInput.getUserInputString();
+
+        //TODO: als antwoord niks is legen array sturen
+        //ask allergien(seperate bij komma)
+        System.out.println("\nHeeft de cliënt allergien?\n Zo nee typ \"niks\", Zo ja typ de allergien en typ een komma om ze te scheiden");
+        String allergienUncut = userInput.getUserInputString().trim();
+        String[] allergien = allergienUncut.split(",");
+
+        //TODO: als antwoord niks is legen array sturen
+        //ask dieetwensen (seperate bij komma)
+        System.out.println("\nHeeft de cliënt dieetwensen?\n Zo nee typ \"niks\", Zo ja typ de dieetwens en typ een komma om ze te scheiden");
+        String dieetwensenUncut = userInput.getUserInputString().trim();
+        String[] dieetwensen = dieetwensenUncut.split(",");
+
+//        if (test)
+//            System.exit(6);
+//        else
+            addClient(name, geslacht, allergien, dieetwensen, wijk);
+    }
+
+    private static void addClient(String name, String geslacht, String[] allergien, String[] dieetwensen, String wijk) {
+
     }
 }

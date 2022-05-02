@@ -29,7 +29,10 @@ public class menuController {
                     startMenu();
                 }
             }
+            //eerste signature (header) en return type schrijven. Dan de testen schrijven. dan de functie schrijven
+            //per stap hierboven commiten
 
+            //todo: options naar menuController verplaatsen?
             switch (Integer.toString(choice)) {
                 case "1":
                     //select client
@@ -37,6 +40,7 @@ public class menuController {
                     break;
                 case "2":
                     //add client
+                    Client.addClientOption(false);
                     break;
                 case "3":
                     //change client data
