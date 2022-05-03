@@ -11,6 +11,7 @@ public class Client {
     private String[] dieetwensen;
     private String[] allergien;
     private final String wijk;
+    private String[] wijken = new String[]{"Holy", "Schiedam"};
     private ArrayList<Weekplanner> weekplanners = new ArrayList<Weekplanner>();
     public static ArrayList<Client> alleClienten = new ArrayList<Client>();
 
@@ -160,11 +161,13 @@ public class Client {
         String dieetwensenUncut = userInput.getUserInputString();
         String[] dieetwensen = dieetwensenUncut.split(",");
 
-        addClient(name, geslacht, allergien, dieetwensen, wijk);
+        //TODO: iets weergeven als het gelukt is of niet
+        boolean gelukt = addClient(name, geslacht, allergien, dieetwensen, wijk);
     }
 
     //TODO: kijken of dit ook naar private kan
-    public static void addClient(String name, String geslacht, String[] allergien, String[] dieetwensen, String wijk) {
+    public static boolean addClient(String name, String geslacht, String[] allergien, String[] dieetwensen, String wijk) {
 
+        return false;
     }
 }
