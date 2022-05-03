@@ -3,6 +3,7 @@ package model2;
 import controller2.profileController;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class Client {
     private final String naam;
@@ -11,6 +12,7 @@ public class Client {
     private String[] dieetwensen;
     private String[] allergien;
     private final String wijk;
+    private static String[] wijken = new String[]{"Holy", "Schiedam"};
     private ArrayList<Weekplanner> weekplanners = new ArrayList<Weekplanner>();
     public static ArrayList<Client> alleClienten = new ArrayList<Client>();
 
@@ -133,7 +135,7 @@ public class Client {
         profileController.profilecontroller.showProfileFromClient(this);
     }
 
-    public static void addClientOption(boolean test) {
+    public static void addClientOption() {
         System.out.println("Inschrijven Cliënt:\n");
 
         //ask name
@@ -157,16 +159,46 @@ public class Client {
         //TODO: als antwoord niks is legen array sturen
         //ask dieetwensen (seperate bij komma)
         System.out.println("\nHeeft de cliënt dieetwensen?\n Zo nee typ \"niks\", Zo ja typ de dieetwens en typ een komma om ze te scheiden");
-        String dieetwensenUncut = userInput.getUserInputString().trim();
+        String dieetwensenUncut = userInput.getUserInputString();
         String[] dieetwensen = dieetwensenUncut.split(",");
 
-//        if (test)
-//            System.exit(6);
-//        else
-            addClient(name, geslacht, allergien, dieetwensen, wijk);
+        //TODO: iets weergeven als het gelukt is of niet
+        boolean gelukt = addClient(name, geslacht, allergien, dieetwensen, wijk);
     }
 
-    private static void addClient(String name, String geslacht, String[] allergien, String[] dieetwensen, String wijk) {
+    //TODO: kijken of dit ook naar private kan
+    public static boolean addClient(String naam, String geslacht2, String[] allergien, String[] dieetwensen, String wijk) {
+        for (Client client : alleClienten)
+            if (client.naam.equalsIgnoreCase(naam))
+                return false;
 
+        //TODO: opschonen maar anders werkt het niet want java doet kut
+        if (geslacht2.equalsIgnoreCase("Man")) {
+
+        } else {
+            if (geslacht2.equalsIgnoreCase("Vrouw")) {
+
+            } else {
+                return false;
+            }
+        }
+
+
+        if (allergien[0].toLowerCase(Locale.ROOT).equals("niks"))
+            allergien = null;
+
+        if (dieetwensen[0].toLowerCase(Locale.ROOT).equals("niks"))
+            dieetwensen = null;
+
+        boolean state = false;
+        for (String w : wijken)
+            if (wijk.equalsIgnoreCase(wijk))
+                state = true;
+        if (!state)
+            return false;
+
+        new Client(naam, geslacht2, allergien, dieetwensen, wijk);
+
+        return true;
     }
 }

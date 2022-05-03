@@ -9,6 +9,7 @@ import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 
 public class TestClient {
     private UserInputMethodsForTesting userInputOutputHandler;
@@ -37,7 +38,7 @@ public class TestClient {
                 " Zo nee typ \"niks\", Zo ja typ de dieetwens en typ een komma om ze te scheiden> ";//Later in te vullen
 
         //act
-        Client.addClientOption(true);
+        Client.addClientOption();
         String actualOutcome = userInputOutputHandler.getfullSystemOutput().toString();
 
         //Assert
@@ -45,7 +46,29 @@ public class TestClient {
 
     }
 
+    @Test
+    public void TestAddClient() {
+        //Arrange
+        int expectedTotalClientLength = Client.alleClienten.size()+1;
+        int expectedTotalClientLength2 = Client.alleClienten.size()+2;
 
+        //Act
+        boolean state = Client.addClient("Quinten Kempers", "Man", new String[]{"niks"}, new String[]{"Bananen"}, "Holy");
+        int actualTotalClientLength = Client.alleClienten.size();
+
+        //Assert
+        Assertions.assertTrue(state);
+        Assertions.assertEquals(expectedTotalClientLength, actualTotalClientLength);
+        Assertions.assertEquals("Quinten Kempers", Client.alleClienten.get(Client.alleClienten.size()-1).getNaam());
+
+        state = Client.addClient("Lisa de Jager", "Vrouw", new String[]{"niks"}, new String[]{"Bananen"}, "Holy");
+        actualTotalClientLength = Client.alleClienten.size();
+
+        //Assert
+        Assertions.assertTrue(state);
+        Assertions.assertEquals(expectedTotalClientLength2, actualTotalClientLength);
+        Assertions.assertEquals("Lisa de Jager", Client.alleClienten.get(Client.alleClienten.size()-1).getNaam());
+    }
    
 //Act
 //        userInputOutputHandler.makeUserInput("Thomas");
