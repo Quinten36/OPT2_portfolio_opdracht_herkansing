@@ -9,6 +9,7 @@ import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 
 public class TestClient {
     private UserInputMethodsForTesting userInputOutputHandler;
@@ -52,19 +53,21 @@ public class TestClient {
         int expectedTotalClientLength2 = Client.alleClienten.size()+2;
 
         //Act
-        Client.addClient("Quinten Kempers", "Man", null, new String[]{"Bananen"}, "Holy");
+        boolean state = Client.addClient("Quinten Kempers", "Man", new String[]{"niks"}, new String[]{"Bananen"}, "Holy");
         int actualTotalClientLength = Client.alleClienten.size();
 
         //Assert
+        Assertions.assertTrue(state);
         Assertions.assertEquals(expectedTotalClientLength, actualTotalClientLength);
-        Assertions.assertEquals("Quinten", Client.alleClienten.get(Client.alleClienten.size()-1).getNaam());
+        Assertions.assertEquals("Quinten Kempers", Client.alleClienten.get(Client.alleClienten.size()-1).getNaam());
 
-        Client.addClient("Lisa de Jager", "Vrouw", null, new String[]{"Bananen"}, "Holy");
+        state = Client.addClient("Lisa de Jager", "Vrouw", new String[]{"niks"}, new String[]{"Bananen"}, "Holy");
         actualTotalClientLength = Client.alleClienten.size();
 
         //Assert
+        Assertions.assertTrue(state);
         Assertions.assertEquals(expectedTotalClientLength2, actualTotalClientLength);
-        Assertions.assertEquals("Quinten", Client.alleClienten.get(Client.alleClienten.size()-1).getNaam());
+        Assertions.assertEquals("Lisa de Jager", Client.alleClienten.get(Client.alleClienten.size()-1).getNaam());
     }
    
 //Act

@@ -167,13 +167,22 @@ public class Client {
     }
 
     //TODO: kijken of dit ook naar private kan
-    public static boolean addClient(String naam, String geslacht, String[] allergien, String[] dieetwensen, String wijk) {
+    public static boolean addClient(String naam, String geslacht2, String[] allergien, String[] dieetwensen, String wijk) {
         for (Client client : alleClienten)
             if (client.naam.equalsIgnoreCase(naam))
                 return false;
 
-        if (!geslacht.equals("Man") || !geslacht.equals("Vrouw"))
-            return false;
+        //TODO: opschonen maar anders werkt het niet want java doet kut
+        if (geslacht2.equalsIgnoreCase("Man")) {
+
+        } else {
+            if (geslacht2.equalsIgnoreCase("Vrouw")) {
+
+            } else {
+                return false;
+            }
+        }
+
 
         if (allergien[0].toLowerCase(Locale.ROOT).equals("niks"))
             allergien = null;
@@ -183,12 +192,12 @@ public class Client {
 
         boolean state = false;
         for (String w : wijken)
-            if (w.toLowerCase(Locale.ROOT).equals(wijk))
+            if (wijk.equalsIgnoreCase(wijk))
                 state = true;
         if (!state)
             return false;
 
-        new Client(naam, geslacht, allergien, dieetwensen, wijk);
+        new Client(naam, geslacht2, allergien, dieetwensen, wijk);
 
         return true;
     }
