@@ -3,6 +3,7 @@ package model2;
 import controller2.profileController;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class Client {
     private final String naam;
@@ -11,7 +12,7 @@ public class Client {
     private String[] dieetwensen;
     private String[] allergien;
     private final String wijk;
-    private String[] wijken = new String[]{"Holy", "Schiedam"};
+    private static String[] wijken = new String[]{"Holy", "Schiedam"};
     private ArrayList<Weekplanner> weekplanners = new ArrayList<Weekplanner>();
     public static ArrayList<Client> alleClienten = new ArrayList<Client>();
 
@@ -166,8 +167,29 @@ public class Client {
     }
 
     //TODO: kijken of dit ook naar private kan
-    public static boolean addClient(String name, String geslacht, String[] allergien, String[] dieetwensen, String wijk) {
+    public static boolean addClient(String naam, String geslacht, String[] allergien, String[] dieetwensen, String wijk) {
+        for (Client client : alleClienten)
+            if (client.naam.equalsIgnoreCase(naam))
+                return false;
 
-        return false;
+        if (!geslacht.equals("Man") || !geslacht.equals("Vrouw"))
+            return false;
+
+        if (allergien[0].toLowerCase(Locale.ROOT).equals("niks"))
+            allergien = null;
+
+        if (dieetwensen[0].toLowerCase(Locale.ROOT).equals("niks"))
+            dieetwensen = null;
+
+        boolean state = false;
+        for (String w : wijken)
+            if (w.toLowerCase(Locale.ROOT).equals(wijk))
+                state = true;
+        if (!state)
+            return false;
+
+        new Client(naam, geslacht, allergien, dieetwensen, wijk);
+
+        return true;
     }
 }
