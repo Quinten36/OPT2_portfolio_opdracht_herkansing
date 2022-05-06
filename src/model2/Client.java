@@ -192,7 +192,7 @@ public class Client {
 
         boolean state = false;
         for (String w : wijken)
-            if (wijk.equalsIgnoreCase(wijk))
+            if (w.equalsIgnoreCase(wijk))
                 state = true;
         if (!state)
             return false;

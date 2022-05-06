@@ -69,6 +69,28 @@ public class TestClient {
         Assertions.assertEquals(expectedTotalClientLength2, actualTotalClientLength);
         Assertions.assertEquals("Lisa de Jager", Client.alleClienten.get(Client.alleClienten.size()-1).getNaam());
     }
+
+    @Test
+    public void TestAddClientMCDC() {
+        //a = alle gegevens bekend
+        //b = wijk
+        //c = nog niet bestaan
+
+        //Act
+        boolean state011 = Client.addClient("Quinten Kempers", "Onbekend", new String[]{"niks"}, new String[]{"Bananen"}, "Holy");
+
+        boolean state101 = Client.addClient("Quinten Kempers", "Man", new String[]{"niks"}, new String[]{"Bananen"}, "Kethel");
+
+        boolean state110 = Client.addClient("Jantienne van Zeeuw", "Man", new String[]{"niks"}, new String[]{"Bananen"}, "Holy");
+
+        boolean state111 = Client.addClient("Lisa de Jager", "Vrouw", new String[]{"niks"}, new String[]{"Bananen"}, "Holy");
+
+        //Assert
+        Assertions.assertFalse(state011);
+        Assertions.assertFalse(state101);
+        Assertions.assertFalse(state110);
+        Assertions.assertTrue(state111);
+    }
    
 //Act
 //        userInputOutputHandler.makeUserInput("Thomas");
